@@ -1,0 +1,13 @@
+brew install ruby@3.3
+
+# 安装 3.9.x
+gem install jekyll -v "~> 3.9"
+
+# Ruby 3.x 上跑 Jekyll 3.9 需要 webrick
+gem install webrick -v "~> 1.8"
+
+# 然后在项目目录执行
+bundle install
+
+
+bundle exec jekyll serve
