@@ -1,0 +1,52 @@
+---
+layout: default
+title: Projects
+navbar_title: Projects
+container_class: container-xl
+---
+
+{% assign projects_raw = site.projects | default: site.collections.projects.docs %}
+{% if projects_raw %}
+  {% assign projects = projects_raw | sort: "date" | reverse %}
+{% else %}
+  {% assign projects = empty %}
+{% endif %}
+
+<div class="row">
+    <div class="col-12 col-lg-10">
+        <h1 class="pt-4 mb-4">Projects</h1>
+
+        {% if projects.size == 0 %}
+        <div class="alert alert-light border shadow-sm rounded-lg">No projects yet. Add markdown files to the <code>_projects</code> folder to have them appear here.</div>
+        {% else %}
+        <div class="row">
+            {% for project in projects %}
+            <div class="col-md-6 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    {% if project.cover %}
+                    <img class="card-img-top" src="{{ project.cover | relative_url }}" alt="{{ project.title }}">
+                    {% endif %}
+                    <div class="card-body">
+                        <p class="text-muted small mb-1">{{ project.date | date: "%B %Y" }}</p>
+                        <h5 class="card-title mb-2"><a class="text-dark" href="{{ project.url | relative_url }}">{{ project.title }}</a></h5>
+                        {% if project.summary %}<p class="card-text">{{ project.summary }}</p>{% endif %}
+                        {% if project.links %}
+                        <div class="mt-2">
+                            {% for link in project.links %}
+                                {% assign label = link[0] %}{% assign target = link[1] %}
+                                {% if target.url %}
+                                    <a class="btn btn-sm btn-outline-dark mr-2 mb-2" target="{{ target['target'] | default: '_blank' }}" href="{{ target.url }}">{{ label }}</a>
+                                {% else %}
+                                    <a class="btn btn-sm btn-outline-dark mr-2 mb-2" target="_blank" href="{{ target }}">{{ label }}</a>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+</div>

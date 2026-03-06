@@ -1,0 +1,80 @@
+---
+layout: default
+---
+<style>
+.publication-page h1, .publication-page h2, .publication-page h3, .publication-page h4 { font-family: "Lato", "Helvetica Neue", Arial, sans-serif; }
+.publication-page .paper-card { border: 1px solid rgba(0,0,0,0.05); }
+.publication-page .meta-pill { font-size: 0.78rem; letter-spacing: 0.08em; }
+.publication-page pre { background: #f7f7f7; border-radius: 8px; }
+.publication-page .link-pill { border-radius: 999px; }
+</style>
+
+<div class="publication-page py-5">
+    <div class="paper-card bg-white shadow-sm rounded-xl p-4 p-md-5 mb-4">
+        <div class="d-flex flex-column flex-md-row">
+            <div class="flex-fill pr-md-4">
+                {% comment %}Resolve display year: prefer pub_date if provided; if it's a date string, format to YYYY; otherwise use as-is; fallback to page.date.{% endcomment %}
+                {% assign display_year = nil %}
+                {% if page.pub_date %}
+                    {% if page.pub_date contains '-' %}
+                        {% assign display_year = page.pub_date | date: "%Y" %}
+                    {% else %}
+                        {% assign display_year = page.pub_date %}
+                    {% endif %}
+                {% elsif page.date %}
+                    {% assign display_year = page.date | date: "%Y" %}
+                {% endif %}
+
+                <div class="d-flex align-items-center mb-2 text-muted meta-pill text-uppercase">
+                    <span class="mr-3">{{ page.pub | default: "Preprint" }}</span>
+                    {% if display_year %}
+                        <span class="mr-3">&bull;</span>
+                        <span>{{ display_year }}</span>
+                    {% endif %}
+                </div>
+                <h1 class="h2 font-weight-bold mb-3">{{ page.title }}</h1>
+                <p class="lead mb-2">{% include widgets/author_list.html authors=page.authors %}</p>
+                {% if page.pub_note %}<p class="text-muted small mb-3">{{ page.pub_note }}</p>{% endif %}
+                <div class="d-flex flex-wrap">
+                    {% for link in page.links %}
+                        {% assign label = link[0] %}
+                        {% assign target = link[1] %}
+                        {% if target.url %}
+                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" target="{{ target['target'] | default: '_blank' }}" href="{{ target.url }}">{{ label }}</a>
+                        {% else %}
+                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" target="_blank" href="{{ target }}">{{ label }}</a>
+                        {% endif %}
+                    {% endfor %}
+                    <a class="btn btn-dark btn-sm mr-2 mb-2 link-pill" href="{{ page.url | relative_url }}">Paper Page</a>
+                </div>
+            </div>
+            {% if page.cover %}
+            <div class="mt-4 mt-md-0 ml-md-4" style="min-width: 240px; max-width: 320px;">
+                <img src="{{ page.cover | relative_url }}" alt="{{ page.title }}" class="img-fluid rounded-lg shadow-sm">
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="paper-card bg-white shadow-sm rounded-xl p-4 p-md-5 mb-4">
+        <h4 class="mb-3">Abstract</h4>
+        <p class="mb-0 text-justify">{{ page.abstract }}</p>
+    </div>
+
+    {% if page.content and page.content != "" %}
+    <div class="paper-card bg-white shadow-sm rounded-xl p-4 p-md-5 mb-4">
+        <h4 class="mb-3">Details</h4>
+        {{ content }}
+    </div>
+    {% endif %}
+
+    {% if page.citation %}
+    <div class="paper-card bg-white shadow-sm rounded-xl p-4 p-md-5">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+            <h4 class="mb-0">Citation</h4>
+            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('bibtex-block').innerText)">Copy</button>
+        </div>
+        <pre class="small mb-0"><code id="bibtex-block">{{ page.citation | strip }}</code></pre>
+    </div>
+    {% endif %}
+</div>

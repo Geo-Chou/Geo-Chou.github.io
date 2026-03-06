@@ -35,6 +35,21 @@ plugins:
 # timezone: Asia/Shanghai
 
 collections:
-  - publications
-  - news
-  - showcase
+  publications:
+    output: true
+    permalink: /publications/:year/:slug.html
+  news:
+    output: false
+  showcase:
+    output: false
+  projects:
+    output: true
+    permalink: /projects/:slug/
+
+defaults:
+  - scope:
+      path: ""
+      type: "publications"
+    values:
+      layout: publication
+      container_class: container-lg
