@@ -25,7 +25,7 @@ citation: |
 
 ---
 
-Rascene pushes mmWave sensing toward photorealistic 3D reconstructions. 
+Rascene pushes mmWave sensing toward photorealistic 3D reconstructions. Below is the demo video showing how to collect Radar data and its corresponding LiDAR point clouds.
 
 ## Demo Video:
 <div class="embed-responsive embed-responsive-16by9 mb-3">
