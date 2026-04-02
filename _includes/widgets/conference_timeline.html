@@ -1,0 +1,66 @@
+{% assign deadline_config = site.data.conference_deadlines %}
+{% assign deadline_items = deadline_config.items | default: empty %}
+{% assign deadline_tags = "" | split: "" %}
+
+{% for item in deadline_items %}
+    {% if item.tags %}
+        {% for tag in item.tags %}
+            {% unless deadline_tags contains tag %}
+                {% assign deadline_tags = deadline_tags | push: tag %}
+            {% endunless %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+
+<section class="conference-ddl-panel shadow-sm rounded-xl mb-4"
+         id="conference-deadlines"
+         data-deadline-items='{{ deadline_items | jsonify | escape }}'
+         data-default-tag='{{ deadline_config.default_tag | default: "all" }}'
+         data-default-view='{{ deadline_config.default_view | default: "upcoming" }}'
+         data-default-expanded='{{ deadline_config.default_expanded | default: false }}'>
+    <div class="conference-ddl-shell">
+        <div class="conference-ddl-copy">
+            <div class="conference-ddl-kicker">Conference Deadlines</div>
+            <h2 class="conference-ddl-title">{{ deadline_config.title | default: "Conference Timeline" }}</h2>
+            {% if deadline_config.description %}
+            <p class="conference-ddl-description mb-0">{{ deadline_config.description }}</p>
+            {% endif %}
+        </div>
+
+        <div class="conference-ddl-controls">
+            <div class="conference-ddl-filter-group" role="group" aria-label="Timeline view filter">
+                <button type="button" class="conference-ddl-filter is-active" data-view-filter="upcoming">Upcoming</button>
+                <button type="button" class="conference-ddl-filter" data-view-filter="all">All</button>
+                <button type="button" class="conference-ddl-filter" data-view-filter="archived">Past</button>
+            </div>
+
+            <div class="conference-ddl-filter-group conference-ddl-tag-group" role="group" aria-label="Conference tag filter">
+                <button type="button" class="conference-ddl-filter is-active" data-tag-filter="all">All</button>
+                {% for tag in deadline_tags %}
+                <button type="button" class="conference-ddl-filter" data-tag-filter="{{ tag }}">{{ tag }}</button>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="conference-ddl-summary" data-deadline-summary></div>
+
+    <div class="conference-ddl-meta conference-ddl-meta-compact">
+        <span class="conference-ddl-counter" data-deadline-counter></span>
+        <button type="button" class="conference-ddl-toggle" data-deadline-toggle aria-expanded="false">
+            <span data-deadline-toggle-label>Expand details</span>
+            <i class="fas fa-chevron-down ml-2 conference-ddl-toggle-icon" aria-hidden="true"></i>
+        </button>
+    </div>
+
+    <div class="conference-ddl-details d-none" data-deadline-details>
+        <div class="conference-ddl-meta">
+            <span class="conference-ddl-timezone">
+                <i class="far fa-clock mr-1"></i>{{ deadline_config.display_timezone | default: "Local browser time" }}
+            </span>
+        </div>
+
+        <div class="conference-ddl-list" data-deadline-list></div>
+        <div class="conference-ddl-empty d-none" data-deadline-empty>No deadlines match the current filters.</div>
+    </div>
+</section>

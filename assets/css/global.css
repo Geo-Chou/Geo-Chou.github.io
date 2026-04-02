@@ -96,3 +96,709 @@ div.lazy {
 .email-text {
     font-family: Courier, monospace;
 }
+
+.conference-ddl-panel {
+    position: relative;
+    overflow: hidden;
+    padding: 1.5rem;
+    background:
+        radial-gradient(circle at top right, rgba(201, 224, 255, 0.85), transparent 28%),
+        linear-gradient(135deg, #f7fbff 0%, #ffffff 48%, #fdf7ef 100%);
+    border: 1px solid rgba(11, 42, 76, 0.08);
+}
+
+.conference-ddl-shell {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.conference-ddl-kicker {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    padding: 0.28rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(13, 59, 102, 0.08);
+    color: #0d3b66;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.conference-ddl-title {
+    margin-bottom: 0.45rem;
+    color: #0b2a4c;
+    font-size: 1.28rem;
+}
+
+.conference-ddl-description {
+    max-width: 44rem;
+    color: #4e5f73;
+    font-size: 0.92rem;
+}
+
+.conference-ddl-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-width: min(100%, 20rem);
+}
+
+.conference-ddl-filter-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.32rem;
+}
+
+.conference-ddl-filter {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.22rem 0.55rem;
+    background: rgba(255, 255, 255, 0.88);
+    box-shadow: inset 0 0 0 1px rgba(11, 42, 76, 0.08);
+    color: #42566c;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.conference-ddl-filter.is-active {
+    background: #0d3b66;
+    color: #fff;
+    box-shadow: none;
+}
+
+.conference-ddl-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    color: #5a6c7e;
+    font-size: 0.92rem;
+}
+
+.conference-ddl-meta-compact {
+    justify-content: space-between;
+}
+
+.conference-ddl-counter {
+    font-weight: 700;
+    color: #0b2a4c;
+}
+
+.conference-ddl-toggle {
+    border: 0;
+    border-radius: 999px;
+    padding: 0.55rem 0.9rem;
+    background: #0d3b66;
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+}
+
+.conference-ddl-toggle-icon {
+    transition: transform 0.2s ease;
+}
+
+.conference-ddl-panel.is-expanded .conference-ddl-toggle-icon {
+    transform: rotate(180deg);
+}
+
+.conference-ddl-summary {
+    margin-top: 0.8rem;
+}
+
+.conference-ddl-summary-header {
+    margin-bottom: 0.45rem;
+}
+
+.conference-ddl-summary-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem 0.8rem;
+    color: #65717d;
+    font-size: 0.66rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.conference-ddl-summary-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.conference-ddl-legend-dot {
+    width: 0.65rem;
+    height: 0.65rem;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.conference-ddl-legend-dot.is-abstract { background: #a9a9a9; }
+.conference-ddl-legend-dot.is-submission { background: #1fa85a; }
+.conference-ddl-legend-dot.is-rebuttal { background: #d97706; }
+.conference-ddl-legend-dot.is-decision { background: #dc2626; }
+.conference-ddl-legend-dot.is-conference { background: #4f8df7; }
+
+.conference-ddl-legend-line {
+    width: 1.25rem;
+    height: 2px;
+    background: #c7d1dd;
+    display: inline-block;
+}
+
+.conference-ddl-timeline-scroll {
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 172px;
+    padding-bottom: 0.2rem;
+    cursor: grab;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+}
+
+.conference-ddl-timeline-scroll.is-dragging {
+    cursor: grabbing;
+    user-select: none;
+}
+
+.conference-ddl-timeline-surface {
+    width: max-content;
+    min-width: 100%;
+    background: rgba(255, 255, 255, 0.92);
+    border: 1px solid rgba(11, 42, 76, 0.08);
+    border-radius: 1.15rem;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    overflow: visible;
+}
+
+.conference-ddl-axis,
+.conference-ddl-timeline-row {
+    display: grid;
+    grid-template-columns: 124px minmax(960px, 1fr);
+}
+
+.conference-ddl-axis {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    border-bottom: 1px solid rgba(11, 42, 76, 0.08);
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(247,251,255,0.85));
+}
+
+.conference-ddl-axis-label,
+.conference-ddl-timeline-label {
+    position: sticky;
+    left: 0;
+    z-index: 4;
+    padding: 0.45rem 0.55rem 0.45rem 0.6rem;
+    background: rgba(255, 255, 255, 0.96);
+    border-right: 1px solid rgba(11, 42, 76, 0.06);
+}
+
+.conference-ddl-axis-label {
+    color: #6f7a86;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.conference-ddl-axis-track {
+    position: relative;
+    height: 40px;
+}
+
+.conference-ddl-axis-line {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    height: 1px;
+    background: transparent;
+}
+
+.conference-ddl-axis-month {
+    position: absolute;
+    top: 0.45rem;
+    transform: translateX(-50%);
+    color: #7a8088;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.conference-ddl-axis-minor {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(190, 200, 211, 0.3);
+}
+
+.conference-ddl-axis-now {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1.5px dashed rgba(79, 141, 247, 0.65);
+}
+
+.conference-ddl-axis-now span {
+    position: absolute;
+    top: 0.12rem;
+    left: 0.32rem;
+    padding: 0.1rem 0.32rem;
+    border-radius: 999px;
+    background: rgba(79, 141, 247, 0.12);
+    color: #4f8df7;
+    font-size: 0.6rem;
+    font-weight: 700;
+}
+
+.conference-ddl-timeline-rows {
+    position: relative;
+    overflow: visible;
+}
+
+.conference-ddl-rows-now {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    border-left: 1.5px dashed rgba(79, 141, 247, 0.65);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.conference-ddl-timeline-row {
+    min-height: 44px;
+    border-bottom: 1px solid rgba(11, 42, 76, 0.08);
+}
+
+.conference-ddl-timeline-row:last-child {
+    border-bottom: 0;
+}
+
+.conference-ddl-timeline-row.is-highlight .conference-ddl-timeline-label {
+    background: linear-gradient(135deg, rgba(255,255,255,0.98), rgba(255,246,230,0.94));
+}
+
+.conference-ddl-timeline-name {
+    color: #0b2a4c;
+    font-size: 0.74rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.conference-ddl-timeline-subline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.18rem;
+    align-items: center;
+    margin-top: 0.1rem;
+}
+
+.conference-ddl-summary-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.08rem 0.26rem;
+    border-radius: 999px;
+    background: #edf3f8;
+    color: #39566f;
+    font-size: 0.56rem;
+    font-weight: 700;
+}
+
+.conference-ddl-summary-source,
+.conference-ddl-source-timezone {
+    color: #6a7785;
+    font-size: 0.58rem;
+    font-weight: 700;
+}
+
+.conference-ddl-timeline-track {
+    position: relative;
+}
+
+.conference-ddl-timeline-line {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    height: 1px;
+    transform: translateY(-50%);
+    background: linear-gradient(90deg, rgba(196,205,215,0.7), rgba(214,221,229,0.95));
+}
+
+.conference-ddl-timeline-segment {
+    position: absolute;
+    top: 50%;
+    height: 2px;
+    transform: translateY(-50%);
+    border-radius: 999px;
+    opacity: 0.38;
+    filter: saturate(0.8);
+}
+
+.conference-ddl-timeline-segment.is-submission {
+    background: rgba(31, 168, 90, 0.7);
+}
+
+.conference-ddl-timeline-segment.is-rebuttal {
+    background: rgba(217, 119, 6, 0.72);
+}
+
+.conference-ddl-timeline-segment.is-decision {
+    background: rgba(220, 38, 38, 0.72);
+}
+
+.conference-ddl-timeline-point {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+}
+
+.conference-ddl-timeline-dot {
+    width: 10px;
+    height: 10px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    background: #4f8df7;
+    box-shadow: 0 0 0 2px rgba(79, 141, 247, 0.18);
+    padding: 0;
+    position: relative;
+}
+
+.conference-ddl-timeline-point.is-abstract .conference-ddl-timeline-dot { background: #a9a9a9; box-shadow: 0 0 0 2px rgba(169,169,169,0.16); }
+.conference-ddl-timeline-point.is-submission .conference-ddl-timeline-dot { background: #1fa85a; box-shadow: 0 0 0 2px rgba(31,168,90,0.16); }
+.conference-ddl-timeline-point.is-rebuttal .conference-ddl-timeline-dot { background: #d97706; box-shadow: 0 0 0 2px rgba(217,119,6,0.16); }
+.conference-ddl-timeline-point.is-decision .conference-ddl-timeline-dot { background: #dc2626; box-shadow: 0 0 0 2px rgba(220,38,38,0.16); }
+.conference-ddl-timeline-point.is-conference .conference-ddl-timeline-dot { background: #4f8df7; box-shadow: 0 0 0 2px rgba(79,141,247,0.18); }
+.conference-ddl-timeline-point.is-past .conference-ddl-timeline-dot {
+    filter: saturate(0.7);
+}
+
+.conference-ddl-timeline-point.is-primary .conference-ddl-timeline-dot {
+    width: 13px;
+    height: 13px;
+}
+
+.conference-ddl-timeline-point.is-secondary .conference-ddl-timeline-dot {
+    width: 9.5px;
+    height: 9.5px;
+    opacity: 0.75;
+    border-width: 1.5px;
+}
+
+.conference-ddl-timeline-point.is-primary.is-submission .conference-ddl-timeline-dot { box-shadow: 0 0 0 4px rgba(31, 168, 90, 0.16); }
+.conference-ddl-timeline-point.is-primary.is-rebuttal .conference-ddl-timeline-dot { box-shadow: 0 0 0 4px rgba(217, 119, 6, 0.16); }
+.conference-ddl-timeline-point.is-primary.is-decision .conference-ddl-timeline-dot { box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.16); }
+
+.conference-ddl-timeline-bubble,
+.conference-ddl-floating-tooltip {
+    position: fixed;
+    min-width: 220px;
+    max-width: 360px;
+    padding: 0.68rem 0.78rem;
+    border-radius: 0.9rem;
+    background: rgba(255, 255, 255, 0.97);
+    border: 1px solid rgba(11, 42, 76, 0.08);
+    box-shadow: 0 16px 36px rgba(11, 42, 76, 0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.conference-ddl-floating-tooltip {
+    top: 0;
+    left: 0;
+    transform: translateY(-4px);
+    z-index: 2000;
+    color: #111827;
+    font-family: "Lato", sans-serif;
+}
+
+.conference-ddl-floating-tooltip.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.conference-ddl-floating-tooltip.is-below {
+    transform: translateY(4px);
+}
+
+.conference-ddl-timeline-bubble-title {
+    color: #0b2a4c;
+    font-size: 0.84rem;
+    font-weight: 700;
+}
+
+.conference-ddl-timeline-bubble-title-small {
+    margin-bottom: 0.32rem;
+    color: #8a919b;
+    font-size: 0.56rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.conference-ddl-timeline-bubble-eyebrow {
+    margin-bottom: 0.18rem;
+    color: #6a7785;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.conference-ddl-timeline-bubble-date {
+    margin-top: 0.24rem;
+    color: #44576a;
+    font-size: 0.74rem;
+    font-weight: 700;
+}
+
+.conference-ddl-timeline-bubble-stage {
+    color: #111827;
+    font-size: 0.88rem;
+    font-weight: 700;
+    line-height: 1.15;
+}
+
+.conference-ddl-timeline-bubble-note {
+    margin-top: 0.22rem;
+    color: #8a919b;
+    font-size: 0.56rem;
+    line-height: 1.45;
+    font-weight: 500;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.conference-ddl-timeline-bubble-meta-lines {
+    margin-top: 0.18rem;
+    color: #8a919b;
+    font-size: 0.57rem;
+    font-weight: 500;
+    line-height: 1.55;
+    letter-spacing: 0.01em;
+    font-family: "SFMono-Regular", Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.conference-ddl-timeline-bubble-meta-lines div {
+    margin: 0;
+}
+
+.conference-ddl-summary-empty {
+    padding: 0.9rem 1rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.72);
+    color: #5a6c7e;
+}
+
+.conference-ddl-details {
+    margin-top: 0.4rem;
+}
+
+.conference-ddl-list {
+    position: relative;
+    padding-left: 1.25rem;
+}
+
+.conference-ddl-list::before {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    bottom: 0.25rem;
+    left: 0.35rem;
+    width: 2px;
+    background: linear-gradient(180deg, #0d3b66 0%, rgba(13, 59, 102, 0.1) 100%);
+}
+
+.conference-ddl-month {
+    position: sticky;
+    top: 4.5rem;
+    z-index: 1;
+    display: inline-block;
+    margin: 1rem 0 0.75rem;
+    padding: 0.25rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
+    color: #0d3b66;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.conference-ddl-item {
+    position: relative;
+    margin-bottom: 1rem;
+    padding-left: 1.25rem;
+}
+
+.conference-ddl-marker {
+    position: absolute;
+    top: 1.05rem;
+    left: -0.04rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    border: 2px solid #0d3b66;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 5px rgba(13, 59, 102, 0.08);
+}
+
+.conference-ddl-content {
+    padding: 1rem 1rem 0.95rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(11, 42, 76, 0.08);
+    box-shadow: 0 14px 30px rgba(11, 42, 76, 0.06);
+}
+
+.conference-ddl-item.is-highlight .conference-ddl-content {
+    background: linear-gradient(135deg, rgba(13, 59, 102, 0.06), rgba(255, 246, 230, 0.95));
+    border-color: rgba(13, 59, 102, 0.12);
+}
+
+.conference-ddl-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.conference-ddl-item-title {
+    font-size: 1.1rem;
+    color: #0b2a4c;
+}
+
+.conference-ddl-venue,
+.conference-ddl-deadline,
+.conference-ddl-note,
+.conference-ddl-links,
+.conference-ddl-location {
+    color: #5a6c7e;
+}
+
+.conference-ddl-deadline {
+    margin: 0.65rem 0 0.45rem;
+    font-weight: 700;
+}
+
+.conference-ddl-status {
+    align-self: flex-start;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(36, 123, 160, 0.12);
+    color: #14506b;
+    font-size: 0.82rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.conference-ddl-status.is-past {
+    background: rgba(120, 129, 140, 0.14);
+    color: #5d6773;
+}
+
+.conference-ddl-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.75rem;
+    align-items: center;
+}
+
+.conference-ddl-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.conference-ddl-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.26rem 0.55rem;
+    border-radius: 999px;
+    background: #edf3f8;
+    color: #39566f;
+    font-size: 0.78rem;
+    font-weight: 700;
+}
+
+.conference-ddl-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.conference-ddl-links a {
+    color: #0d3b66;
+    font-weight: 700;
+}
+
+.conference-ddl-empty {
+    padding: 1rem 0 0.25rem;
+    color: #5a6c7e;
+}
+
+@media (max-width: 767.98px) {
+    .conference-ddl-panel {
+        padding: 1rem;
+    }
+
+    .conference-ddl-title {
+        font-size: 1.4rem;
+    }
+
+    .conference-ddl-list {
+        padding-left: 1rem;
+    }
+
+    .conference-ddl-item {
+        padding-left: 0.95rem;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .conference-ddl-meta-compact {
+        align-items: stretch;
+    }
+
+    .conference-ddl-toggle {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .conference-ddl-axis,
+    .conference-ddl-timeline-row {
+        grid-template-columns: 100px minmax(960px, 1fr);
+    }
+
+    .conference-ddl-axis-label,
+    .conference-ddl-timeline-label {
+        padding-left: 0.8rem;
+        padding-right: 0.7rem;
+    }
+
+    .conference-ddl-summary-legend {
+        font-size: 0.62rem;
+    }
+}

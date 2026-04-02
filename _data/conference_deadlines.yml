@@ -1,0 +1,85 @@
+title: Conference Deadlines
+# description: Track a few target venues directly on the publications page. Edit `_data/conference_deadlines.yml` to add or remove conferences.
+display_timezone: Deadline shown in your local browser timezone
+default_view: upcoming
+default_tag: all
+items:
+  # Optional multi-stage format:
+  # milestones:
+  #   - type: abstract
+  #     date: "2026-05-08T20:00:00-07:00"
+  #   - type: submission
+  #     date: "2026-05-15T20:00:00-07:00"
+  #   - type: rebuttal
+  #     date: "2026-08-01T20:00:00-07:00"
+  #   - type: decision
+  #     date: "2026-09-15T20:00:00-07:00"
+  #   - type: conference
+  #     date: "2026-12-01T09:00:00-08:00"
+  - name: CVPR 2026
+    venue: IEEE/CVF Conference on Computer Vision and Pattern Recognition
+    timezone: AoE
+    url: https://cvpr.thecvf.com/
+    tags: [CV]
+    note: Paper submissions timeline
+    highlight: true
+    milestones:
+      - type: abstract
+        label: Abstract submission deadline
+        date: "2025-11-07T23:59:00-12:00"
+      - type: submission
+        label: Paper submission deadline
+        date: "2025-11-13T23:59:00-12:00"
+      - type: submission
+        label: Supplementary materials deadline
+        date: "2025-11-20T23:59:00-12:00"
+      - type: rebuttal
+        label: Reviews released
+        date: "2026-01-22T23:59:00-12:00"
+      - type: rebuttal
+        label: Rebuttal period ends
+        date: "2026-01-29T23:59:00-12:00"
+      - type: decision
+        label: Final decisions
+        date: "2026-02-20T23:59:00-12:00"
+  - name: ECCV 2026
+    venue: European Conference on Computer Vision
+    timezone: CET
+    url: https://eccv.ecva.net/
+    tags: [CV]
+    note: Paper submissions timeline
+    milestones:
+      - type: abstract
+        label: Registration
+        date: "2026-02-26T17:00:00-05:00"
+      - type: submission
+        label: Main conference submission
+        date: "2026-03-05T17:00:00-05:00"
+      - type: submission
+        label: Supplemental materials
+        date: "2026-03-12T18:00:00-04:00"
+      - type: rebuttal
+        label: Reviews released to authors
+        date: "2026-05-02T09:00:00+02:00"
+      - type: rebuttal
+        label: Rebuttal deadline
+        date: "2026-05-11T17:00:00-04:00"
+      - type: decision
+        label: Final decisions
+        date: "2026-06-17T09:00:00+02:00"
+  - name: NeurIPS 2026
+    venue: Conference on Neural Information Processing Systems
+    timezone: AoE
+    url: https://neurips.cc/
+    tags: [ML]
+    note: Main conference paper submission timeline
+    milestones:
+      - type: abstract
+        label: Paper abstract submission deadline
+        date: "2026-05-04T23:59:00-12:00"
+      - type: submission
+        label: Full paper submission deadline
+        date: "2026-05-06T23:59:00-12:00"
+      - type: decision
+        label: Paper author notifications
+        date: "2026-09-24T23:59:00-12:00"
