@@ -13,7 +13,7 @@ authors:
 - Xiaoming Liu
 - Huacheng Zeng
 links:
-  Paper: https://arxiv.org/
+  Paper: https://arxiv.org/abs/2604.02603
 
 citation: |
   @inproceedings{zhou2026rascene,
