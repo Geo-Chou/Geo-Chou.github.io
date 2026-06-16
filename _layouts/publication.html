@@ -61,7 +61,8 @@ layout: default
         <p class="mb-0 text-justify">{{ page.abstract }}</p>
     </div>
 
-    {% if page.content and page.content != "" %}
+    {% assign details_content = content | strip %}
+    {% if details_content != "" %}
     <div class="paper-card bg-white shadow-sm rounded-xl p-4 p-md-5 mb-4">
         <h4 class="mb-3">Details</h4>
         {{ content }}
