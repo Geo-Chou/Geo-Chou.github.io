@@ -67,19 +67,29 @@ items:
       - type: decision
         label: Final decisions
         date: "2026-06-17T09:00:00+02:00"
-  - name: NeurIPS 2026
-    venue: Conference on Neural Information Processing Systems
+  - name: WACV 2027
+    venue: Winter Conference on Applications of Computer Vision
     timezone: AoE
-    url: https://neurips.cc/
-    tags: [ML]
-    note: Main conference paper submission timeline
+    url: https://wacv.thecvf.com/Conferences/2027/Dates
+    tags: [CV]
+    note: Paper submissions timeline
     milestones:
       - type: abstract
-        label: Paper abstract submission deadline
-        date: "2026-05-04T23:59:00-12:00"
+        label: Round 1 paper registration deadline
+        date: "2026-06-19T23:59:00-12:00"
       - type: submission
-        label: Full paper submission deadline
-        date: "2026-05-06T23:59:00-12:00"
+        label: Round 1 paper submission deadline
+        date: "2026-06-26T23:59:00-12:00"
+      - type: supplementary
+        label: Round 1 supplementary material deadline
+        date: "2026-06-28T23:59:00-12:00"
       - type: decision
-        label: Paper author notifications
-        date: "2026-09-24T23:59:00-12:00"
+        label: Round 1 reviews and decisions to authors
+        date: "2026-08-09T23:59:00-12:00"
+      - type: rebuttal
+        label: Round 1 rebuttal and revision submission deadline
+        date: "2026-08-21T23:59:00-12:00"
+      - type: decision
+        label: Round 1 final decisions released to authors
+        date: "2026-10-09T23:59:00-12:00"
+
