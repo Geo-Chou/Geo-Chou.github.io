@@ -16,32 +16,6 @@ items:
   #     date: "2026-09-15T20:00:00-07:00"
   #   - type: conference
   #     date: "2026-12-01T09:00:00-08:00"
-  - name: CVPR 2026
-    venue: IEEE/CVF Conference on Computer Vision and Pattern Recognition
-    timezone: AoE
-    url: https://cvpr.thecvf.com/
-    tags: [CV]
-    note: Paper submissions timeline
-    highlight: true
-    milestones:
-      - type: abstract
-        label: Abstract submission deadline
-        date: "2025-11-07T23:59:00-12:00"
-      - type: submission
-        label: Paper submission deadline
-        date: "2025-11-13T23:59:00-12:00"
-      - type: submission
-        label: Supplementary materials deadline
-        date: "2025-11-20T23:59:00-12:00"
-      - type: rebuttal
-        label: Reviews released
-        date: "2026-01-22T23:59:00-12:00"
-      - type: rebuttal
-        label: Rebuttal period ends
-        date: "2026-01-29T23:59:00-12:00"
-      - type: decision
-        label: Final decisions
-        date: "2026-02-20T23:59:00-12:00"
   - name: ECCV 2026
     venue: European Conference on Computer Vision
     timezone: CET
@@ -92,4 +66,26 @@ items:
       - type: decision
         label: Round 1 final decisions released to authors
         date: "2026-10-09T23:59:00-12:00"
+  - name: CVPR 2027
+    venue: Conference on Computer Vision and Pattern Recognition
+    timezone: AoE
+    url: https://cvpr.thecvf.com/Conferences/2027/Dates
+    tags: [CV]
+    note: Paper submissions timeline
+    milestones:
+      - type: abstract
+        label: Paper registration deadline
+        date: "2026-11-10T23:59:00-12:00"
+      - type: submission
+        label: Submission deadline
+        date: "2026-11-16T23:59:00-12:00"
+      - type: supplementary
+        label: Supplementary materials deadline
+        date: "2026-11-23T23:59:00-12:00"
+      - type: decision
+        label: Reviews released
+        date: "2027-01-25T23:59:00-12:00"
+      - type: decision
+        label: Final decisions
+        date: "2027-02-25T23:59:00-12:00"
 
