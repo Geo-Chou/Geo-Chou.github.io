@@ -16,7 +16,7 @@ links:
   Paper: https://arxiv.org/abs/2604.02603
 
 citation: |
-  @inproceedings{zhou2026rascene,
+  @inproceedings{song2026rascene,
     title={Rascene: High-Fidelity 3D Scene Imaging with mmWave Communication Signals},
     author={Song, KunZhe and Zhou, Geo Jie and Liu, Xiaoming and Zeng, Huacheng},
     booktitle={IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
