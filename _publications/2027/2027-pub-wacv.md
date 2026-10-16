@@ -29,8 +29,8 @@ Below is the demo video showing how to collect Radar data and its corresponding 
 
 ## Demo Video:
 <div class="embed-responsive embed-responsive-16by9 mb-3">
-<video class="embed-responsive-item" controls preload="metadata" poster="/assets/images/covers/2026_cvpr_cover.png">
-  <source src="https://meida.geo-zhou.com/
+<video class="embed-responsive-item" controls preload="metadata" poster="/assets/images/covers/2027_radpose_cover.png">
+  <source src="https://media.geo-zhou.com/
 Demo_RadPose_anonymous.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
