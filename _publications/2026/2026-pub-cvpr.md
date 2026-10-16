@@ -30,7 +30,7 @@ Rascene pushes mmWave sensing toward photorealistic 3D reconstructions. Below is
 ## Demo Video:
 <div class="embed-responsive embed-responsive-16by9 mb-3">
 <video class="embed-responsive-item" controls preload="metadata" poster="/assets/images/covers/2026_cvpr_cover.png">
-  <source src="/assets/videos/2025-cvpr.mp4" type="video/mp4">
+  <source src="https://meida.geo-zhou.com/2025-cvpr.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 </div>

@@ -12,11 +12,11 @@ authors:
 - KunZhe Song
 - Ruxin Lin
 - Huacheng Zeng
-# links:
-#   Paper: https://arxiv.org/abs/2604.02603
+links:
+  Paper: https://blank
 
 citation: |
-  @inproceedings{zhou2026radpose,
+  @inproceedings{zhou2027radpose,
     title={RadPose: ISAC-based RF 3D Human Pose Estimation},
     author={Zhou, Geo Jie and Song, Kunzhe and Lin, Ruxin and Zeng, Huacheng},
     booktitle={The IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)},
@@ -25,12 +25,13 @@ citation: |
 
 ---
 
-Rascene pushes mmWave sensing toward photorealistic 3D reconstructions. Below is the demo video showing how to collect Radar data and its corresponding LiDAR point clouds.
+Below is the demo video showing how to collect Radar data and its corresponding LiDAR point clouds.
 
 ## Demo Video:
 <div class="embed-responsive embed-responsive-16by9 mb-3">
 <video class="embed-responsive-item" controls preload="metadata" poster="/assets/images/covers/2026_cvpr_cover.png">
-  <source src="/assets/videos/2025-cvpr.mp4" type="video/mp4">
+  <source src="https://meida.geo-zhou.com/
+Demo_RadPose_anonymous.mp4" type="video/mp4">
   Your browser does not support the video tag.
 </video>
 </div>
