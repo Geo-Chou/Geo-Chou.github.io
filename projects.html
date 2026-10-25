@@ -12,41 +12,42 @@ container_class: container-xl
   {% assign projects = empty %}
 {% endif %}
 
-<div class="row">
-    <div class="col-12 col-lg-10">
-        <h1 class="pt-4 mb-4">Projects</h1>
+<div class="projects-index py-4">
+    <div class="projects-index-heading mb-4">
+        <p class="projects-index-eyebrow mb-2">Research</p>
+        <h1 class="mb-2">Projects</h1>
+        <p class="text-muted mb-0">Selected systems, methods, and research artifacts.</p>
+    </div>
 
         {% if projects.size == 0 %}
         <div class="alert alert-light border shadow-sm rounded-lg">No projects yet. Add markdown files to the <code>_projects</code> folder to have them appear here.</div>
         {% else %}
-        <div class="row">
+        <div class="row projects-grid">
             {% for project in projects %}
             <div class="col-md-6 mb-4">
-                <div class="card h-100 border-0 shadow-sm">
+                <article class="card project-index-card h-100 border-0">
                     {% if project.cover %}
-                    <img class="card-img-top" src="{{ project.cover | relative_url }}" alt="{{ project.title }}">
+                    <a class="project-index-cover" href="{{ project.url | relative_url }}" aria-label="View {{ project.title }}">
+                        <img class="card-img-top" src="{{ project.cover | relative_url }}" alt="{{ project.title }}" loading="lazy">
+                    </a>
                     {% endif %}
-                    <div class="card-body">
-                        <p class="text-muted small mb-1">{{ project.date | date: "%B %Y" }}</p>
-                        <h5 class="card-title mb-2"><a class="text-dark" href="{{ project.url | relative_url }}">{{ project.title }}</a></h5>
+                    <div class="card-body d-flex flex-column">
+                        <p class="project-index-meta mb-2">{% if project.venue %}{{ project.venue }}{% else %}{{ project.date | date: "%B %Y" }}{% endif %}</p>
+                        <h2 class="h5 card-title mb-3"><a class="text-dark" href="{{ project.url | relative_url }}">{{ project.title }}</a></h2>
                         {% if project.summary %}<p class="card-text">{{ project.summary }}</p>{% endif %}
                         {% if project.links %}
-                        <div class="mt-2">
+                        <div class="project-links mt-auto pt-2">
                             {% for link in project.links %}
-                                {% assign label = link[0] %}{% assign target = link[1] %}
-                                {% if target.url %}
-                                    <a class="btn btn-sm btn-outline-dark mr-2 mb-2" target="{{ target['target'] | default: '_blank' }}" href="{{ target.url }}">{{ label }}</a>
-                                {% else %}
-                                    <a class="btn btn-sm btn-outline-dark mr-2 mb-2" target="_blank" href="{{ target }}">{{ label }}</a>
-                                {% endif %}
+                                {% assign project_link_label = link[0] %}
+                                {% assign project_link_target = link[1] %}
+                                {% include widgets/project_link.html label=project_link_label target=project_link_target compact=true %}
                             {% endfor %}
                         </div>
                         {% endif %}
                     </div>
-                </div>
+                </article>
             </div>
             {% endfor %}
         </div>
         {% endif %}
-    </div>
 </div>

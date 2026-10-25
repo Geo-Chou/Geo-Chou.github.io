@@ -13,7 +13,8 @@ authors:
 - Ruxin Lin
 - Huacheng Zeng
 links:
-  Paper: https://blank
+  Paper: https://arxiv.org
+  Project: /projects/2027-radpose/
 
 citation: |
   @inproceedings{zhou2027radpose,

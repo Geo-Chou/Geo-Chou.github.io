@@ -5,6 +5,10 @@ body {
     padding-top: 5.0rem;
 }
 
+body.no-navbar {
+    padding-top: 1.5rem;
+}
+
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4, .h5, .h6 {
     font-weight: 700;
@@ -95,6 +99,233 @@ div.lazy {
 
 .email-text {
     font-family: Courier, monospace;
+}
+
+/* Research project pages */
+.project-page {
+    --project-ink: #142033;
+    --project-muted: #687386;
+    --project-accent: #2458a6;
+    --project-line: rgba(20, 32, 51, 0.09);
+    max-width: 1080px;
+    margin: 0 auto;
+    color: var(--project-ink);
+}
+
+.project-surface {
+    margin-bottom: 1.5rem;
+    padding: clamp(1.5rem, 4vw, 3.25rem);
+    border: 1px solid var(--project-line);
+    border-radius: 1.25rem;
+    background: rgba(255, 255, 255, 0.96);
+    box-shadow: 0 16px 45px rgba(26, 43, 72, 0.07);
+}
+
+.project-hero {
+    position: relative;
+    overflow: hidden;
+    padding-top: clamp(2.25rem, 7vw, 5rem);
+    padding-bottom: clamp(2.25rem, 7vw, 5rem);
+    background: #fff;
+}
+
+.project-eyebrow,
+.projects-index-eyebrow,
+.project-index-meta {
+    color: var(--project-accent, #2458a6);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.project-title {
+    max-width: 900px;
+    margin: 0 auto 1.35rem;
+    font-size: clamp(2rem, 5vw, 3.7rem);
+    line-height: 1.08;
+    letter-spacing: -0.035em;
+}
+
+.project-authors {
+    margin-bottom: 0.45rem;
+    font-size: 1.06rem;
+    line-height: 1.8;
+}
+
+.project-authors a.text-body {
+    color: var(--project-accent) !important;
+    text-decoration: underline;
+    text-decoration-color: rgba(36, 88, 166, 0.25);
+    text-underline-offset: 0.2em;
+}
+
+.project-affiliations {
+    margin-bottom: 1.6rem;
+    color: var(--project-muted);
+}
+
+.project-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    min-height: 42px;
+    padding: 0.62rem 1rem;
+    border: 1px solid rgba(20, 32, 51, 0.13);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--project-ink, #142033);
+    font-size: 0.9rem;
+    font-weight: 700;
+    line-height: 1;
+    box-shadow: 0 5px 16px rgba(22, 39, 67, 0.06);
+    transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease, color 160ms ease;
+}
+
+.project-link:hover,
+.project-link:focus {
+    transform: translateY(-2px);
+    border-color: rgba(36, 88, 166, 0.45);
+    color: var(--project-accent, #2458a6);
+    text-decoration: none;
+    box-shadow: 0 9px 22px rgba(22, 39, 67, 0.11);
+}
+
+.project-link-disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    box-shadow: none;
+}
+
+.project-link-compact {
+    min-height: 34px;
+    padding: 0.48rem 0.72rem;
+    font-size: 0.78rem;
+}
+
+.project-content-card,
+.project-citation-card {
+    font-size: 1.03rem;
+    line-height: 1.8;
+}
+
+.project-content-card h2,
+.project-citation-card h2 {
+    margin-bottom: 1rem;
+    font-size: clamp(1.45rem, 3vw, 2rem);
+    letter-spacing: -0.02em;
+}
+
+.project-content-card > p {
+    color: #4d5a6d;
+}
+
+.project-content-card h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    font-size: 1.05rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.project-content-card img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0.9rem 0 1.25rem;
+}
+
+.project-video {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    overflow: hidden;
+    border-radius: 0.85rem;
+    background: #0c111b;
+}
+
+.project-citation-card pre {
+    overflow-x: auto;
+    padding: 1.15rem;
+    border-radius: 0.8rem;
+    background: #f6f8fb;
+    color: #253247;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.projects-index {
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
+.projects-index-heading {
+    padding: 1.25rem 0.25rem 0.5rem;
+}
+
+.projects-index-heading h1 {
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    letter-spacing: -0.035em;
+}
+
+.project-index-card {
+    overflow: hidden;
+    border: 1px solid rgba(20, 32, 51, 0.08) !important;
+    box-shadow: 0 14px 38px rgba(26, 43, 72, 0.07);
+    transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.project-index-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 19px 46px rgba(26, 43, 72, 0.12);
+}
+
+.project-index-cover {
+    display: block;
+    overflow: hidden;
+    background: #eef2f7;
+}
+
+.project-index-cover img {
+    aspect-ratio: 16 / 8;
+    object-fit: cover;
+    transition: transform 300ms ease;
+}
+
+.project-index-card:hover .project-index-cover img {
+    transform: scale(1.015);
+}
+
+.project-index-card .card-body {
+    padding: 1.4rem;
+}
+
+.project-index-card .card-title {
+    line-height: 1.35;
+}
+
+.project-index-card .card-title a:hover {
+    color: #2458a6 !important;
+    text-decoration: none;
+}
+
+@media (max-width: 575.98px) {
+    .project-surface {
+        margin-bottom: 1rem;
+        border-radius: 1rem;
+    }
+
+    .project-link {
+        min-height: 40px;
+        padding: 0.6rem 0.82rem;
+    }
 }
 
 .conference-ddl-panel {

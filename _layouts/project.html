@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+<main class="project-page py-4 py-md-5">
+    <header class="project-hero project-surface text-center">
+        {% if page.venue %}
+        <p class="project-eyebrow mb-3">{{ page.venue }}{% if page.year %}<span aria-hidden="true"> · </span>{{ page.year }}{% endif %}</p>
+        {% endif %}
+
+        <h1 class="project-title">{{ page.title }}</h1>
+
+        {% if page.authors %}
+        <p class="project-authors">
+            {% include widgets/author_list.html authors=page.authors %}
+        </p>
+        {% endif %}
+
+        {% if page.affiliations %}<p class="project-affiliations">{{ page.affiliations }}</p>{% endif %}
+
+        {% if page.links or page.citation %}
+        <nav class="project-links justify-content-center" aria-label="Project resources">
+            {% for link in page.links %}
+                {% assign project_link_label = link[0] %}
+                {% assign project_link_target = link[1] %}
+                {% include widgets/project_link.html label=project_link_label target=project_link_target %}
+            {% endfor %}
+            {% if page.citation %}
+            <a class="project-link" href="#citation">
+                <i class="fa-solid fa-quote-right" aria-hidden="true"></i>
+                <span>BibTeX</span>
+            </a>
+            {% endif %}
+        </nav>
+        {% endif %}
+    </header>
+
+    {% assign project_content = content | strip %}
+    {% if project_content != "" %}
+    <div class="project-surface project-content-card" data-project-body{% if page.cover %} data-cover="{% if page.cover contains '://' %}{{ page.cover | escape }}{% else %}{{ page.cover | relative_url | escape }}{% endif %}"{% endif %}>
+        {{ content }}
+    </div>
+    {% endif %}
+
+    {% if page.citation %}
+    <section id="citation" class="project-surface project-citation-card">
+        <div class="d-flex align-items-center justify-content-between mb-3">
+            <h2 class="mb-0">Citation</h2>
+            <button class="btn btn-sm btn-outline-secondary" type="button" onclick="navigator.clipboard.writeText(document.getElementById('project-bibtex').innerText)">
+                <i class="fa-regular fa-copy mr-1" aria-hidden="true"></i>Copy
+            </button>
+        </div>
+        <pre class="mb-0"><code id="project-bibtex">{{ page.citation | strip }}</code></pre>
+    </section>
+    {% endif %}
+</main>
+<script src="{{ '/assets/js/project.js' | relative_url }}" defer></script>

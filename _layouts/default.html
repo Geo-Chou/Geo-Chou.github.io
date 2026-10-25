@@ -17,8 +17,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" integrity="sha384-nB0miv6/jRmo5UMMR1wu3Gz6NLsoTkbqJghGIsx//Rlm+ZU03BU6SQNC66uf4l5+" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ '/assets/css/global.css' | relative_url }}">
 </head>
-<body class="bg-light" {{ page.body_attr }}>
-    {% include navbar.html %}
+{% assign hide_navbar = page.hide_navbar %}
+{% if hide_navbar == nil %}
+    {% if page.layout == 'project' or page.collection == 'projects' %}
+        {% assign hide_navbar = true %}
+    {% endif %}
+{% endif %}
+<body class="bg-light{% if hide_navbar %} no-navbar{% endif %}" {{ page.body_attr }}>
+    {% unless hide_navbar %}{% include navbar.html %}{% endunless %}
     <div class="{% if page.container_class %}{{ page.container_class }}{% else %}container-lg{% endif %}">
         {{content}}
     </div>

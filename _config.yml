@@ -53,3 +53,9 @@ defaults:
     values:
       layout: publication
       container_class: container-lg
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: project
+      container_class: container-lg
