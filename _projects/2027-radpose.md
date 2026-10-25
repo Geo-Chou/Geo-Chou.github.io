@@ -15,10 +15,10 @@ affiliations: INSS Lab, Michigan State University
 links:
   Paper: /publications/2026/2027-pub-wacv.html
   Code: https://github.com/Geo-Chou/RadPose
-  Checkpoints: https://blank
-  Dataset: https://mirrors.egr.msu.edu/inss/RadPose_dataset/
+  Checkpoints: https://huggingface.co/Geochou/RadPose
+  Dataset: https://mirrors.egr.msu.edu/inss/RadPose_dataset/download_radpose.sh
   # Replace with your file URL; rename to Poster if needed, or add both.
-  Slides: https://blank
+  # Slides: https://blank
 citation: |
   @inproceedings{zhou2027radpose,
     title={RadPose: ISAC-based RF 3D Human Pose Estimation},
