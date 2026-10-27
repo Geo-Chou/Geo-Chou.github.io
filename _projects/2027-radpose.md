@@ -40,7 +40,7 @@ Human pose estimation under adverse lighting and occlusion conditions remains ch
 
 ## Dataset
 
-RadPose dataset consists of 183,497 radio frames with the ground-truth pose annotations of 11 subjects in 21 scenes. The ground-truth annotations are derived from corresponding depth camera frames with pretrained RTMPose model [27].  RadPose dataset covers the subjects without motion sequences, fixed motion amplitudes, or designated activity locations. Of the 21 scenes, 75% data of 17 scenes (/seen/train/) are used for model training. The remaining 25% data (/seen/val/) and holdout 4 scenes (/unseen/test) are reserved for evaluation.
+RadPose dataset consists of 183,497 radio frames with the ground-truth pose annotations of 11 subjects in 21 scenes. The ground-truth annotations are derived from corresponding depth camera frames with pretrained RTMPose model.  RadPose dataset covers the subjects without motion sequences, fixed motion amplitudes, or designated activity locations. Of the 21 scenes, 75% data of 17 scenes (/seen/train/) are used for model training. The remaining 25% data (/seen/val/) and holdout 4 scenes (/unseen/test) are reserved for evaluation.
 
 [Download Here (1.8TB in total)](https://mirrors.egr.msu.edu/inss/RadPose_dataset/download_radpose.sh)
 
