@@ -1,6 +1,21 @@
 # Home page repo
 deploy from academic-homepage style
 
+## 搜索引擎收录
+
+所有项目页和论文页都会生成指向自身的 canonical、独立搜索标题和 meta description。
+项目页搜索标题附加 `Project`，论文页附加 `Paper`；页面内的标题保持不变。
+摘要依次使用 front matter 的 `description`、`summary`、`abstract`，最后使用站点说明。
+如果需要自定义搜索摘要，只需增加 `description: ...`。
+
+`/sitemap.xml` 自动收集公开 HTML 页面、`_projects` 和 `_publications`；新增 Markdown 后随构建更新。
+`/robots.txt` 声明 sitemap 地址。无需额外插件，兼容 GitHub Pages。
+不想加入 sitemap 的页面可设 `sitemap: false`；需要请求搜索引擎不收录的 default/project/publication 页面可设 `noindex: true`。这些选项不是访问权限控制。
+
+部署后在 Google Search Console 中验证 `geo-zhou.com`，提交 `https://geo-zhou.com/sitemap.xml`。
+用 URL Inspection 分别检查项目页和论文页，可查看 Google 选定的 canonical、索引状态并请求收录。
+新 sitemap 和元信息帮助发现页面，但不能保证收录时间、搜索排名或同一论文的两个页面同时出现。
+
 ## 编写项目页
 
 在 `_projects/` 新建 Markdown 文件即可，默认使用 `project` layout 并隐藏导航栏。

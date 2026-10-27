@@ -1,0 +1,21 @@
+---
+layout: null
+permalink: /sitemap.xml
+sitemap: false
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{%- assign sitemap_pages = site.pages | concat: site.projects | concat: site.publications -%}
+{%- for entry in sitemap_pages -%}
+  {%- assign extension = entry.url | split: '.' | last -%}
+  {%- assign ending = entry.url | slice: -1, 1 -%}
+  {%- if entry.layout and entry.sitemap != false and entry.noindex != true -%}
+    {%- if extension == 'html' or ending == '/' %}
+  <url>
+    <loc>{{ entry.url | replace: '/index.html', '/' | absolute_url | xml_escape }}</loc>
+    {% if entry.last_modified_at %}<lastmod>{{ entry.last_modified_at | date_to_xmlschema }}</lastmod>{% endif %}
+  </url>
+    {%- endif -%}
+  {%- endif -%}
+{%- endfor %}
+</urlset>
