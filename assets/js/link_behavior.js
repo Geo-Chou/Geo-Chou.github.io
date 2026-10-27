@@ -4,8 +4,8 @@
     var mainSiteHosts = new Set(['geo-zhou.com', 'www.geo-zhou.com']);
     var absoluteWebUrlPattern = /^(?:https?:)?\/\//i;
 
-    function removeExternalOnlyAttributes(link) {
-        link.removeAttribute('target');
+    function setInternalLinkAttributes(link) {
+        link.setAttribute('target', '_self');
 
         var rel = (link.getAttribute('rel') || '')
             .split(/\s+/)
@@ -36,7 +36,7 @@
         var isMainSiteLink = mainSiteHosts.has(url.hostname.toLowerCase());
 
         if (!isWebLink || isRelativeLink || isMainSiteLink) {
-            removeExternalOnlyAttributes(link);
+            setInternalLinkAttributes(link);
             return;
         }
 

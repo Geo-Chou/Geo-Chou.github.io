@@ -13,4 +13,4 @@
     {%- assign link_is_external = true -%}
   {%- endunless -%}
 {%- endif -%}
-{%- if link_is_external %} target="_blank" rel="noopener noreferrer"{% endif -%}
+{%- if link_is_external %} target="_blank" rel="noopener noreferrer"{% else %} target="_self"{% endif -%}
