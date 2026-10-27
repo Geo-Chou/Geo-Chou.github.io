@@ -16,7 +16,7 @@ links:
   Paper: /publications/2026/2027-pub-wacv.html
   Code: https://github.com/Geo-Chou/RadPose
   Checkpoints: https://huggingface.co/Geochou/RadPose
-  Dataset: /projects/2027-radpose/#dataset
+  Dataset: "#dataset"
   # Replace with your file URL; rename to Poster if needed, or add both.
   # Slides: https://blank
 citation: |
