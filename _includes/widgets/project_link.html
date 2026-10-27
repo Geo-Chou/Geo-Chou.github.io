@@ -1,25 +1,21 @@
 {% assign label = include.label %}
 {% assign target = include.target %}
 {% assign href = target %}
-{% assign link_target = "_self" %}
 {% if target.url %}
   {% assign href = target.url %}
-  {% assign link_target = target.target | default: "_self" %}
+{% endif %}
+{% assign original_href = href %}
+{% assign original_href_first_character = href | slice: 0, 1 %}
+{% if include.anchor_base and original_href_first_character == "#" and href != "#" %}
+  {% assign href = include.anchor_base | append: href %}
 {% endif %}
 {% assign href_prefix = href | slice: 0, 2 %}
 {% assign href_first_character = href | slice: 0, 1 %}
-{% assign is_external = false %}
-{% if href contains "://" or href_prefix == "//" %}
-  {% assign is_external = true %}
-{% endif %}
-{% unless target.target %}
-  {% if is_external %}
-    {% assign link_target = "_blank" %}
-  {% endif %}
-{% endunless %}
+{% assign is_absolute = false %}
+{% if href contains "://" or href_prefix == "//" %}{% assign is_absolute = true %}{% endif %}
 {% assign label_key = label | downcase %}
 {% assign is_placeholder = false %}
-{% if href == "https://blank" or href == "blank" or href == "#" %}
+{% if original_href == "https://blank" or original_href == "blank" or original_href == "#" %}
   {% assign is_placeholder = true %}
 {% endif %}
 {% assign icon = "fa-solid fa-arrow-up-right-from-square" %}
@@ -47,8 +43,7 @@
 </span>
 {% else %}
 <a class="project-link{% if include.compact %} project-link-compact{% endif %}"
-   href="{% if is_external or href_first_character == '#' %}{{ href }}{% else %}{{ href | relative_url }}{% endif %}"
-   {% if link_target != "_self" %}target="{{ link_target }}" rel="noopener noreferrer"{% endif %}>
+   href="{% if is_absolute or href_first_character == '#' %}{{ href }}{% else %}{{ href | relative_url }}{% endif %}"{% include widgets/external_link_attributes.html url=href %}>
   <i class="{{ icon }}" aria-hidden="true"></i>
   <span>{{ label }}</span>
 </a>

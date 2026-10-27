@@ -1,0 +1,16 @@
+{%- assign link_url = include.url | append: "" | strip -%}
+{%- assign link_prefix = link_url | slice: 0, 2 -%}
+{%- assign link_scheme = link_url | split: "://" | first | downcase -%}
+{%- assign link_is_external = false -%}
+{%- if link_scheme == "http" or link_scheme == "https" or link_prefix == "//" -%}
+  {%- if link_prefix == "//" -%}
+    {%- assign link_host_and_path = link_url | remove_first: "//" -%}
+  {%- else -%}
+    {%- assign link_host_and_path = link_url | split: "://" | last -%}
+  {%- endif -%}
+  {%- assign link_host = link_host_and_path | split: "/" | first | split: ":" | first | downcase -%}
+  {%- unless link_host == "geo-zhou.com" or link_host == "www.geo-zhou.com" -%}
+    {%- assign link_is_external = true -%}
+  {%- endunless -%}
+{%- endif -%}
+{%- if link_is_external %} target="_blank" rel="noopener noreferrer"{% endif -%}

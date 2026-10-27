@@ -38,7 +38,8 @@
     {%- endif -%}
     
     {%- if info['url'] -%}
-        <a class="text-body" target="_blank" href="{{ info['url'] }}">{{ display_name }}</a>{%- if forloop.index < authors.size -%}, {% endif -%}
+        {%- assign author_url = info['url'] -%}
+        <a class="text-body" href="{{ author_url }}"{% include widgets/external_link_attributes.html url=author_url %}>{{ display_name }}</a>{%- if forloop.index < authors.size -%}, {% endif -%}
     {%- else -%}
         <span class="text-body">
             {{ display_name }}{%- if forloop.index < authors.size -%}, {% endif -%}

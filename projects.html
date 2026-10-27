@@ -40,7 +40,7 @@ container_class: container-xl
                             {% for link in project.links %}
                                 {% assign project_link_label = link[0] %}
                                 {% assign project_link_target = link[1] %}
-                                {% include widgets/project_link.html label=project_link_label target=project_link_target compact=true %}
+                                {% include widgets/project_link.html label=project_link_label target=project_link_target compact=true anchor_base=project.url %}
                             {% endfor %}
                         </div>
                         {% endif %}

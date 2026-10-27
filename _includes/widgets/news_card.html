@@ -12,7 +12,7 @@
                 <div class="my-1 d-flex">
                     <div>
                         {% if item.link %}
-                        <a class="text-dark" href="{{ item.link }}" target="_blank" rel="noopener">{{ item.title }}</a>
+                        <a class="text-dark" href="{{ item.link }}"{% include widgets/external_link_attributes.html url=item.link %}>{{ item.title }}</a>
                         {% else %}
                         {{ item.title }}
                         {% endif %}

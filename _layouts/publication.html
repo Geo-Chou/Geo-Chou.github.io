@@ -40,9 +40,9 @@ layout: default
                         {% assign label = link[0] %}
                         {% assign target = link[1] %}
                         {% if target.url %}
-                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" target="{{ target['target'] | default: '_blank' }}" href="{{ target.url }}">{{ label }}</a>
+                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" href="{{ target.url }}"{% include widgets/external_link_attributes.html url=target.url %}>{{ label }}</a>
                         {% else %}
-                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" target="_blank" href="{{ target }}">{{ label }}</a>
+                            <a class="btn btn-outline-dark btn-sm mr-2 mb-2 link-pill" href="{{ target }}"{% include widgets/external_link_attributes.html url=target %}>{{ label }}</a>
                         {% endif %}
                     {% endfor %}
                     <a class="btn btn-dark btn-sm mr-2 mb-2 link-pill" href="{{ page.url | relative_url }}">Paper Page</a>
