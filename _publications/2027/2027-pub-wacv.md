@@ -9,11 +9,11 @@ abstract: >-
 cover:          /assets/images/covers/2027_radpose_cover.png
 authors:
 - Geo Jie Zhou
-- KunZhe Song
+- Kunzhe Song
 - Ruxin Lin
 - Huacheng Zeng
 links:
-  Paper: https://arxiv.org
+  Paper: https://arxiv.org/abs/2611.01400
   Project: /projects/2027-radpose/
 
 citation: |

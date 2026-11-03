@@ -13,7 +13,7 @@ authors:
   - Huacheng Zeng
 affiliations: INSS Lab, Michigan State University
 links:
-  Paper: /publications/2026/2027-pub-wacv.html
+  Paper: https://arxiv.org/abs/2611.01400
   Code: https://github.com/Geo-Chou/RadPose
   Checkpoints: https://huggingface.co/Geochou/RadPose
   Dataset: "#dataset"
